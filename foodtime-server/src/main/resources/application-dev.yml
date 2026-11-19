@@ -1,0 +1,21 @@
+foodtime:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: localhost
+    port: 3306
+    database: foodtime_delivery
+    username: root
+    password: ${FOODTIME_DB_PASSWORD}
+  alioss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    access-key-id: ${FOODTIME_ALIOSS_ACCESS_KEY_ID:}
+    access-key-secret: ${FOODTIME_ALIOSS_ACCESS_KEY_SECRET:}
+    bucket-name: foodtime-delivery-platform-bucket
+  redis:
+    host: localhost
+    port: 6379
+    password: ${FOODTIME_REDIS_PASSWORD}
+    database: 10
+  wechat:
+    appid: ${FOODTIME_WECHAT_APPID}
+    secret: ${FOODTIME_WECHAT_SECRET}

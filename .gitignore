@@ -1,0 +1,28 @@
+# Build output
+target/
+*.class
+*.jar
+*.war
+
+# IDE and local workspace
+.idea/
+*.iml
+.vscode/
+
+# Runtime output
+logs/
+*.log
+
+# Local environment and secrets
+.env
+application-local.yml
+
+# Frontend dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local runtime
+/nginx-1.20.2/

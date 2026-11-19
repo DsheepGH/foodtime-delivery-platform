@@ -1,0 +1,61 @@
+server:
+  port: 8080
+
+spring:
+#  profiles:
+#    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/foodtime_delivery?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: ${FOODTIME_DB_PASSWORD}
+  redis:
+    host: ${FOODTIME_REDIS_HOST:localhost}
+    port: ${FOODTIME_REDIS_PORT:6379}
+    password: ${FOODTIME_REDIS_PASSWORD}
+    database: ${FOODTIME_REDIS_DATABASE:10}
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.foodtime.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      foodtime:
+        mapper: debug
+        service: info
+        controller: info
+
+foodtime:
+  jwt:
+    admin-secret-key: foodtime
+    admin-ttl: 72000000
+    admin-token-name: token
+    user-secret-key: foodtime
+    user-ttl: 72000000
+    user-token-name: authentication
+  alioss:
+    endpoint: ${FOODTIME_ALIOSS_ENDPOINT}
+    access-key-id: ${FOODTIME_ALIOSS_ACCESS_KEY_ID}
+    access-key-secret: ${FOODTIME_ALIOSS_ACCESS_KEY_SECRET}
+    bucket-name: ${FOODTIME_ALIOSS_BUCKET}
+  wechat:
+    appid: ${FOODTIME_WECHAT_APPID}
+    secret: ${FOODTIME_WECHAT_SECRET}
+    mchid: ${FOODTIME_WECHAT_MCHID:}
+    mchSerialNo: ${FOODTIME_WECHAT_MCH_SERIAL_NO}
+    privateKeyFilePath: ${FOODTIME_WECHAT_PRIVATE_KEY_PATH}
+    apiV3Key: ${FOODTIME_WECHAT_API_V3_KEY}
+    weChatPayCertFilePath: ${FOODTIME_WECHAT_PAY_CERT_PATH}
+    notifyUrl: ${FOODTIME_WECHAT_NOTIFY_URL}
+    refundNotifyUrl: ${FOODTIME_WECHAT_REFUND_NOTIFY_URL}
+  shop:
+    address: ${FOODTIME_SHOP_ADDRESS:上海市浦东新区世纪大道100号}
+  baidu:
+    ak: ${FOODTIME_BAIDU_AK}
